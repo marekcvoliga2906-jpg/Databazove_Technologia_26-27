@@ -120,13 +120,14 @@ WHERE EXISTS (
 );
 
 /*ULOHA 12*/
+/*Ak bol regióne aspoň 1 predaj v 2024, výsledok môže obsahovať aj tranzakice z 2022 alebo 2023.*/
 SELECT *
 FROM flourmills_sales t1
 WHERE EXISTS (
     SELECT 1
     FROM flourmills_sales t2
     WHERE t2.region = t1.region
-      AND EXTRACT(YEAR FROM t2.sale_date) = 2024
+    AND EXTRACT(YEAR FROM t2.sale_date) = 2024
 );
 
 /*ULOHA 13*/
@@ -148,5 +149,5 @@ WHERE NOT EXISTS (
     SELECT 1
     FROM flourmills_sales t2
     WHERE t2.region = t1.region
-      AND t2.product_category = 'Flour'
+    AND t2.product_category = 'Flour'
 );
