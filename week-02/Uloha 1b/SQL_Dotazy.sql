@@ -1,5 +1,5 @@
 /*Všetky úlohy v časti CTE riešte nad databázou datacraftinglab_db a 
-tabuľkou flourmills_sales, ktoré ste vytvorili a naplnili dátami v úlohe Seminár 2 – Zadanie 2a.*/
+tabuľkou flourmills_sales, ktoré ste vytvorili a naplnili dátami v úlohe Seminár 2 – Zadanie 1b.*/
 
 /*Uloha 1*/
 WITH daily_sales AS (
