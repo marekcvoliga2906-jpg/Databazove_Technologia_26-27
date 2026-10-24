@@ -242,3 +242,28 @@ SELECT
 FROM ranked_customers
 WHERE sales_rank <= 5
 ORDER BY country ASC, month ASC, sales_rank ASC, customer_id ASC;
+
+/*ULOHA 11*/
+WITH ranked_items AS (
+    SELECT 
+        invoice_no,
+        stock_code,
+        description,
+        quantity,
+        unit_price,
+        DENSE_RANK() OVER (
+            PARTITION BY invoice_no 
+            ORDER BY unit_price DESC
+        ) AS price_rank
+    FROM retail_sales
+)
+SELECT 
+    invoice_no,
+    stock_code,
+    description,
+    quantity,
+    unit_price,
+    price_rank
+FROM ranked_items
+WHERE price_rank <= 5
+ORDER BY invoice_no ASC, price_rank ASC, stock_code ASC;
